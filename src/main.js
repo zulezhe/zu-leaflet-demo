@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 17:58:57
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-22 18:27:28
+ * @LastEditTime: 2022-08-22 23:42:18
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
@@ -13,6 +13,7 @@ import '@/assets/styles/include.less';
 import * as directives from '@/directives';
 import * as filters from '@/filters';
 import '@/plugins/element-ui.js';
+import 'animate.css';
 // 全局注册自定义指令
 Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key]);

@@ -1,19 +1,62 @@
+<!--
+ * @Author: zulezhe
+ * @Date: 2022-08-22 20:24:42
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-08-23 00:36:40
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+-->
 <template>
   <div class="home-container">
-    <WMap></WMap>
+    <WMap />
+    <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
   </div>
 </template>
 <script>
 import WMap from '@/components/Map';
+import WTable from '@/components/Table';
+import * as api from '@/api';
 export default {
-  components: { WMap },
+  components: { WMap, WTable },
   data() {
-    return {};
+    return {
+      tableList: [],
+      loading: true,
+      params: {
+        pageNumber: 1,
+        pageSize: 5,
+        total: 10
+      }
+    };
   },
   computed: {},
   created() {},
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.loading = true;
+      api
+        .getData(this.params)
+        .then(res => {
+          this.tableList = res.data;
+          this.params.total = res.total;
+        })
+        .finally(() => {
+          setTimeout(() => {
+            this.loading = false;
+          }, 1000);
+        });
+    },
+    currentChange(val) {
+      this.params.pageNumber = val;
+      this.getData();
+    },
+    rowClick(row, column, event) {
+      console.log('点击当前行===>', row, column, event);
+    }
+  }
 };
 </script>
 <style scoped lang="less">

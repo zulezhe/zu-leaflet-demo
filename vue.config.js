@@ -52,7 +52,6 @@ module.exports = {
     requireModuleExtension: true
   },
   configureWebpack: config => {
-    console.log(config);
     config.devtool = '#eval-source-map';
     config.optimization = {
       // 开启代码分割
