@@ -2,13 +2,13 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 00:36:40
+ * @LastEditTime: 2022-08-23 00:42:05
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <template>
   <div class="home-container">
-    <WMap />
+    <WMap @mapComplete="mapComplete" />
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
     return {
       tableList: [],
       loading: true,
+      map:null,
       params: {
         pageNumber: 1,
         pageSize: 5,
@@ -35,6 +36,10 @@ export default {
     this.getData();
   },
   methods: {
+    mapComplete(map) {
+      this.map = map;
+      console.log('地图加载完成', map);
+    },
     getData() {
       this.loading = true;
       api

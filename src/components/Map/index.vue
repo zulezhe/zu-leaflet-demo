@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-22 23:09:34
+ * @LastEditTime: 2022-08-23 00:40:24
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -67,7 +67,7 @@ export default {
         tdt2: tdt2
       };
       L.control.layers(baseMaps).addTo(map);
-      // new TiledMapLayer(url).addTo(map);
+      this.$emit('mapComplete', map);
     }
   }
 };

@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 23:09:36
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 00:36:13
+ * @LastEditTime: 2022-08-23 00:38:43
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -101,7 +101,9 @@ export default {
     border: 1px solid #aaa;
     background-color: #fff;
     transition: all 0.5s ease-in-out;
+    height:0px;
     &.open {
+      height:330px
     }
   }
 }
