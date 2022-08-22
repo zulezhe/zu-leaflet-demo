@@ -1,0 +1,194 @@
+/* Mixins */
+.clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/**
+* flex布局
+*/
+.flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexColumn() {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.elBtn(@bgc) {
+  background-color: @bgc;
+}
+.iconSize(@color:#EF4873) {
+  color: @color;
+  width: 17px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.transform() {
+  transition: all ease 0.5s;
+}
+// 边框
+.border(@color:red) {
+  box-sizing: border-box;
+  border: 1px solid @color;
+}
+// 背景图片
+.bgImg(@width:100%,@height:100%,@imgURL) {
+  background: url('@{imgURL}') no-repeat;
+  background-size: @width @height;
+  background-position: 0 0;
+}
+/*
+* 文字相关样式设置
+**/
+// 设置文字字体
+.text(@size:14px,@color:#DEDEDE,@family:'Lato-Medium',@weight:400,@align:center,@height:40px) {
+  font-size: @size;
+  font-family: @family;
+  font-weight: @weight;
+  color: @color;
+  text-align: @align;
+  line-height: @height;
+}
+// 文字流光设置
+.streamer-text {
+  text-align: center;
+  font-weight: 800;
+  font-size: 40px;
+  background: linear-gradient(to left bottom, #535352, #ebdcdc 25%, #ecece2 50%, #f3f2f1 75%, #fcfcfc);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-background-size: 200% 100%;
+  -webkit-animation: masked-animation 2s infinite linear;
+}
+
+@keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+// 鼠标手势
+.cursor(@type:pointer) {
+  cursor: @type;
+}
+// 定位
+.position(@left:0px,@top:0px,@bottom:0px,@right:0,@position:absolute,@zIndex:9) {
+  position: @position;
+  left: @left;
+  top: @top;
+  bottom: @bottom;
+  right: @right;
+  z-index: @zIndex;
+}
+// 清除按钮样式
+.clearbtn(@radios:8px) {
+  outline: none;
+  border: none;
+  border-radius: @radios;
+}
+// 设计稿字体样式
+.uifont() {
+  font-family: Lato;
+  font-weight: 500;
+  color: #fff;
+}
+// 浮动
+.float(@f: left) {
+  float: @f;
+}
+// 清除浮动
+.clearfix() {
+  zoom: 1;
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// 设置宽高
+.size(@w:100%, @h:100%) {
+  width: @w;
+  height: @h;
+}
+// 标题一行，多余用省略号
+.text-overflow {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 文字不换行
+.word-noWrap {
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
+}
+// 遮罩样式
+.shade {
+  .size();
+  background-color: rgba(15, 27, 67, 0.9);
+}
+// 圆角
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+/*  命令参数,不用在乎顺序 */
+// 声明
+.class1(@color:black;@margin:10px;@padding:20px) {
+  color: @color;
+  margin: @margin;
+  padding: @padding;
+}
+
+//例子
+.demo1 {
+  .class1(@margin:20px; @color:#33acfe);
+}
+.demo2 {
+  .class1(#efca33; @padding:40px;);
+}
+
+/* 参数可以是个变量 */
+// @baseBg是theme中的基本背景变量
+.bg(@color:@baseBg) {
+  background-color: @color;
+}
+
+/* 对选择器的使用 */
+
+// 声明
+.my-hover() {
+  &:hover {
+    border: 1px solid red;
+  }
+}
+// 结果
+button {
+  .my-hover();
+}
+
+/* import作用 */
+// .foo (@bg: #f5f5f5, @color: #900) {
+//   background: @bg;
+//   color: @color;
+// }
+// .unimportant {
+//   .foo(1);
+// }
+// .important {
+//   .foo(2) !important;
+// }

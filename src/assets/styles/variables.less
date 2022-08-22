@@ -1,0 +1,46 @@
+/* Variables */
+
+// Base color
+@blue: rgba(13, 114, 191, 1);
+@light-blue: #3a71a8;
+@red: #c03639;
+@pink: #e65d6e;
+@green: #30b08f;
+@tiffany: #4ab7bd;
+@yellow: #fec171;
+@panGreen: #30b08f;
+@appBgColor: #f7f7f7;
+@activeColor: #c23f69;
+
+// 头部
+@headerHeight: 100px;
+.navBarBg() {
+  background: linear-gradient(90deg, rgba(23, 93, 184, 1) 0%, rgba(0, 143, 209, 1) 56.99999999999999%, rgba(18, 73, 132, 1) 100%);
+}
+
+// Sidebar
+@sideBarWidth: 220px;
+@sideBarFoldWidth: 64px;
+@sideBgColor: #fff;
+@subMenuBgColor: rgba(13, 114, 191, 1);
+@subMenuHoverColor: #000;
+@subMenuActiveTextColor: #f4f4f5;
+@menuBgColor: #fff;
+@menuTextColor: #000;
+@menuActiveTextColor: #076db5; // Also see settings.sidebarTextTheme
+
+// footer
+@footerHeight: 494px;
+
+// 文字
+@titletextcolor: #01c0d4;
+
+// The :export directive is the magic sauce for webpack
+// https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
+:export {
+  headerHeight: @headerHeight;
+  menuBg: @menuBgColor;
+  menuText: @menuTextColor;
+  menuActiveText: @menuActiveTextColor;
+  sideBgColor: @sideBgColor;
+}
