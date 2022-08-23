@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 11:38:18
+ * @LastEditTime: 2022-08-23 20:05:23
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -18,7 +18,7 @@
 import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
-import { addMarkers } from '@/wleaflet/core/marker';
+import { addMarkers, flyTo, clearGroup } from '@/wleaflet/core/marker';
 import * as api from '@/api';
 export default {
   components: { WMap, WTable, WDrawTool },
@@ -27,6 +27,7 @@ export default {
       tableList: [],
       loading: true,
       map: null,
+      featureGroup: null,
       params: {
         pageNumber: 1,
         pageSize: 5,
@@ -51,7 +52,8 @@ export default {
         .then(res => {
           this.tableList = res.data;
           this.params.total = res.total;
-          addMarkers(this.map, this.tableList, {
+          this.featureGroup && clearGroup(this.featureGroup);
+          this.featureGroup = addMarkers(this.map, this.tableList, {
             icon: {
               iconUrl: require('@/assets/images/1.png'),
               iconSize: [20, 26]
@@ -70,6 +72,7 @@ export default {
     },
     rowClick(row, column, event) {
       console.log('点击当前行===>', row, column, event);
+      flyTo(this.map, [Number(row.lat), Number(row.lng)], 13);
     }
   }
 };
