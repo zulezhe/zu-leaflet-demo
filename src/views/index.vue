@@ -2,27 +2,31 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 00:42:05
+ * @LastEditTime: 2022-08-23 11:38:18
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <template>
   <div class="home-container">
-    <WMap @mapComplete="mapComplete" />
+    <WMap @mapComplete="mapComplete">
+      <WDrawTool :map="map"></WDrawTool>
+    </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
   </div>
 </template>
 <script>
-import WMap from '@/components/Map';
+import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
+import WDrawTool from '@/wleaflet/ui/DrawTool';
+import { addMarkers } from '@/wleaflet/core/marker';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable },
+  components: { WMap, WTable, WDrawTool },
   data() {
     return {
       tableList: [],
       loading: true,
-      map:null,
+      map: null,
       params: {
         pageNumber: 1,
         pageSize: 5,
@@ -47,6 +51,12 @@ export default {
         .then(res => {
           this.tableList = res.data;
           this.params.total = res.total;
+          addMarkers(this.map, this.tableList, {
+            icon: {
+              iconUrl: require('@/assets/images/1.png'),
+              iconSize: [20, 26]
+            }
+          });
         })
         .finally(() => {
           setTimeout(() => {

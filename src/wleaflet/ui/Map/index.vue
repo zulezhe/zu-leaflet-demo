@@ -2,16 +2,20 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 00:40:24
+ * @LastEditTime: 2022-08-23 10:10:55
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <template>
-  <div :class="['wcx-map-container', customClass]" :id="el"></div>
+  <div :class="['wcx-map-container', customClass]" :id="el">
+    <template v-if="map">
+      <slot :map="map"></slot>
+    </template>
+  </div>
 </template>
 <script>
 import L from 'leaflet';
-import { TiledMapLayer, TiandituTileLayer, TianDiTu_MercatorCRS } from '@supermap/iclient-leaflet';
+import { TiledMapLayer } from '@supermap/iclient-leaflet';
 export default {
   components: {},
   props: {
@@ -36,7 +40,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      map: null
+    };
   },
   computed: {},
   created() {},
@@ -47,27 +53,18 @@ export default {
     initMap() {
       var China = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China', { noWrap: true });
       var ChinaDark = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/ChinaDark', { noWrap: true });
-      let tdt = new TiandituTileLayer({
-        layerType: 'img',
-        key: '1d109683f4d84198e37a38c442d68311'
-      });
-      let tdt2 = new TiandituTileLayer({
-        layerType: 'img',
-        isLabel: true,
-        key: '1d109683f4d84198e37a38c442d68311'
-      });
-      var map = L.map(this.el, {
+      let arcgis = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+      this.map = L.map(this.el, {
         ...this.options,
         layers: [China]
       });
       var baseMaps = {
         China: China,
         ChinaDark: ChinaDark,
-        tdt: tdt,
-        tdt2: tdt2
+        arcgis: arcgis
       };
-      L.control.layers(baseMaps).addTo(map);
-      this.$emit('mapComplete', map);
+      L.control.layers(baseMaps).addTo(this.map);
+      this.$emit('mapComplete', this.map);
     }
   }
 };
