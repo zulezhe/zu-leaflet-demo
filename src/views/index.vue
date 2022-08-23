@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 20:05:23
+ * @LastEditTime: 2022-08-23 23:07:33
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -12,16 +12,18 @@
       <WDrawTool :map="map"></WDrawTool>
     </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
+    <WVector ></WVector>
   </div>
 </template>
 <script>
 import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
-import { addMarkers, flyTo, clearGroup } from '@/wleaflet/core/marker';
+import WVector from './vector.vue';
+import { addMarkers, flyTo, clearGroup, closePopup } from '@/wleaflet/core/marker';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool },
+  components: { WMap, WTable, WDrawTool, WVector },
   data() {
     return {
       tableList: [],
@@ -32,7 +34,7 @@ export default {
         pageNumber: 1,
         pageSize: 5,
         total: 10
-      }
+      },
     };
   },
   computed: {},
@@ -53,10 +55,10 @@ export default {
           this.tableList = res.data;
           this.params.total = res.total;
           this.featureGroup && clearGroup(this.featureGroup);
-          this.featureGroup = addMarkers(this.map, this.tableList, {
+          this.featureGroup = addMarkers(this.tableList, {
             icon: {
               iconUrl: require('@/assets/images/1.png'),
-              iconSize: [20, 26]
+              iconSize: [32, 48]
             }
           });
         })
@@ -68,11 +70,12 @@ export default {
     },
     currentChange(val) {
       this.params.pageNumber = val;
+      closePopup();
       this.getData();
     },
     rowClick(row, column, event) {
       console.log('点击当前行===>', row, column, event);
-      flyTo(this.map, [Number(row.lat), Number(row.lng)], 13);
+      flyTo([Number(row.lat), Number(row.lng)], 13);
     }
   }
 };

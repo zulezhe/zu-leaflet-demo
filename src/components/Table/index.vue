@@ -2,14 +2,14 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 23:09:36
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 00:38:43
+ * @LastEditTime: 2022-08-23 22:55:32
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <template>
   <div class="wcx-table-container">
     <div class="wcx-table-fold" @click="handdleFold">
-      <img :class="isOpen ? 'open' : ''" :src="require('@/assets/icon/up.svg')" alt="" />
+      <img :class="isOpen ? 'open' : ''" :src="require('@/assets/images/next-bg.png')" alt="" />
     </div>
     <div class="wcx-table-content" :class="[isOpen ? 'open' : '']">
       <el-table :data="tableList" style="width: 100%" v-loading="loading" @row-click="rowClick">
@@ -91,8 +91,9 @@ export default {
     align-items: center;
     img {
       transition: all 0.5s ease-in-out;
+      transform: rotate(180deg);
       &.open {
-        transform: rotate(180deg);
+        transform: rotate(0deg);
       }
     }
   }
@@ -101,9 +102,9 @@ export default {
     border: 1px solid #aaa;
     background-color: #fff;
     transition: all 0.5s ease-in-out;
-    height:0px;
+    height: 0px;
     &.open {
-      height:330px
+      height: 330px;
     }
   }
 }

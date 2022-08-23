@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 10:10:55
+ * @LastEditTime: 2022-08-23 21:16:32
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -51,14 +51,14 @@ export default {
   },
   methods: {
     initMap() {
-      var China = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China', { noWrap: true });
-      var ChinaDark = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/ChinaDark', { noWrap: true });
+      let China = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China', { noWrap: true });
+      let ChinaDark = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/ChinaDark', { noWrap: true });
       let arcgis = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
-      this.map = L.map(this.el, {
+      window.map = this.map = L.map(this.el, {
         ...this.options,
         layers: [China]
       });
-      var baseMaps = {
+      let baseMaps = {
         China: China,
         ChinaDark: ChinaDark,
         arcgis: arcgis

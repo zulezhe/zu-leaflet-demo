@@ -167,28 +167,3 @@
 .bg(@color:@baseBg) {
   background-color: @color;
 }
-
-/* 对选择器的使用 */
-
-// 声明
-.my-hover() {
-  &:hover {
-    border: 1px solid red;
-  }
-}
-// 结果
-button {
-  .my-hover();
-}
-
-/* import作用 */
-// .foo (@bg: #f5f5f5, @color: #900) {
-//   background: @bg;
-//   color: @color;
-// }
-// .unimportant {
-//   .foo(1);
-// }
-// .important {
-//   .foo(2) !important;
-// }

@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-10-08 23:42:58
- * @LastEditTime: 2021-04-04 22:04:25
- * @LastEditors: wangchaoxu
+ * @LastEditTime: 2022-08-23 21:15:19
+ * @LastEditors: zulezhe
  * @Description: In User Settings Edit
  * @FilePath: \moafly-spa2\.eslintrc.js
  */
@@ -26,6 +26,7 @@ module.exports = {
   globals: {
     google: true,
     Vue: true,
+    map: true,
     Cesium: false,
   }
 };

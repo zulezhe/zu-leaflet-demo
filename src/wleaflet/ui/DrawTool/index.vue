@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 09:25:11
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 10:04:46
+ * @LastEditTime: 2022-08-23 21:56:30
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -52,7 +52,7 @@ export default {
     });
     this.map.on('pm:create', e => {
       console.log(e, '绘制完成时调用');
-      console.log(e.layer._latlngs[0]); //获取绘制的坐标           绘制线段时不能显示第一个点坐标
+      console.log(JSON.stringify(e.layer._latlngs)); //获取绘制的坐标           绘制线段时不能显示第一个点坐标
     });
   },
   components: {},

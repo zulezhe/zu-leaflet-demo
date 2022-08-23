@@ -2,12 +2,13 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 10:08:29
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 20:06:24
+ * @LastEditTime: 2022-08-23 23:17:36
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
 import L from 'leaflet';
 import 'leaflet-canvas-marker';
+let popup = null;
 /**
  * 添加点
  */
@@ -26,16 +27,14 @@ export function addMarker(item) {
       direction: 'top'
     })
     .openTooltip();
-  // marker.on('mouseover', onMouseover);
-  // marker.on('mouseout', onMouseout);
-  // marker.on('click', onClick);
+  marker.on('click', onClick);
   return marker;
 }
 /**
  * 添加多点
  * @param {*} list
  */
-export function addMarkers(map, list, options) {
+export function addMarkers(list, options) {
   let featureGroup = L.featureGroup();
   list.map(item => {
     featureGroup.addLayer(addMarker({ ...item, ...options }));
@@ -94,14 +93,45 @@ export function onMouseout(e) {
  * 点击点
  */
 export function onClick(e) {
-  console.log('点击点', e);
+  let target = e.target;
+  console.log('点击点', e, target);
+  popup = L.popup({
+    offset: L.point(10, 0)
+  }).setLatLng([e.latlng.lat, e.latlng.lng]).setContent(`
+      <div class="custom-popup-container" style="width:300px;height:240px;">
+        <div class="row">
+            <span class="title">名称:</span>
+            <span class="value">${target.options.customData.name}</span>
+        </div>
+        <div class="row">
+            <span class="title">所属省份:</span>
+            <span class="value">${target.options.customData.province}</span>
+        </div>
+        <div class="row">
+            <span class="title">编码:</span>
+            <span class="value">${target.options.customData.code}</span>
+        </div>
+        <div class="row">
+            <span class="title">位置:</span>
+            <span class="value">${target.options.customData.lng},${target.options.customData.lat}</span>
+        </div>
+        <div class="row">
+            <span class="title">海拔:</span>
+            <span class="value">${target.options.customData.height}m</span>
+        </div>
+      </div>
+    `);
+  popup.openOn(map);
+}
+export function closePopup() {
+  console.log(popup);
+  popup && popup._close();
 }
 /**
  * 聚焦到多点
- * @param {*} map
  * @param {*} markers
  */
-export function setViewMarkers(map, markers) {
+export function setViewMarkers(markers) {
   let markerBounds = L.latLngBounds([]);
   markers.forEach(marker => {
     markerBounds.extend([marker.lat, marker.lng]);
@@ -114,6 +144,6 @@ export function setViewMarkers(map, markers) {
  * @param {*} position
  * @param {*} zoom
  */
-export function flyTo(map, position, zoom = 13) {
+export function flyTo(position, zoom = 13) {
   map.flyTo(position, zoom);
 }
