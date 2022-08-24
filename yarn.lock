@@ -2994,11 +2994,6 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.npmmirror.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ==
 
-animate.css@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmmirror.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
-  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
-
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.npmmirror.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -6848,18 +6843,6 @@ launch-editor@^2.2.1, launch-editor@^2.6.0:
     picocolors "^1.0.0"
     shell-quote "^1.7.3"
 
-leaflet-canvas-marker@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmmirror.com/leaflet-canvas-marker/-/leaflet-canvas-marker-0.2.0.tgz#997fc81615c0e118e04ce891bee390aac3066fa1"
-  integrity sha512-BKVcBT+sndtN3SId+fe1+kNJHmpLOxCnQX7GNCQ6COmTWiEmmiZ0S1FmH87I0DIR1TqFBzVYVEFCWWHmpeYWyw==
-  dependencies:
-    rbush "^2.0.2"
-
-leaflet-canvas-markers@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.npmmirror.com/leaflet-canvas-markers/-/leaflet-canvas-markers-1.0.7.tgz#660734c35bf9c05cf50ad205472ebda7c752385d"
-  integrity sha512-A2XQLTsIWA45MT7Q1w0JscHkabHJaWmw4+8YV9E6wg9lomUwT26yJQSjVaRxPs9seQ0YExufUS50WHU41oNKJw==
-
 leaflet.motion@^0.3.2:
   version "0.3.2"
   resolved "https://registry.npmmirror.com/leaflet.motion/-/leaflet.motion-0.3.2.tgz#9e20a9e66c68c45cd922452a7d339d70955e2b49"
@@ -8637,7 +8620,7 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-rbush@2.x, rbush@^2.0.1, rbush@^2.0.2:
+rbush@2.x, rbush@^2.0.1:
   version "2.0.2"
   resolved "https://registry.npmmirror.com/rbush/-/rbush-2.0.2.tgz#bb6005c2731b7ba1d5a9a035772927d16a614605"
   integrity sha512-XBOuALcTm+O/H8G90b6pzu6nX6v2zCKiFG4BJho8a+bY6AER6t8uQUZdi5bomQc0AprCWhEGa7ncAbbRap0bRA==
@@ -10297,11 +10280,6 @@ vue@^2.6.11:
   dependencies:
     "@vue/compiler-sfc" "2.7.9"
     csstype "^3.1.0"
-
-vuex@^3.4.0:
-  version "3.6.2"
-  resolved "https://registry.npmmirror.com/vuex/-/vuex-3.6.2.tgz#236bc086a870c3ae79946f107f16de59d5895e71"
-  integrity sha512-ETW44IqCgBpVomy520DT5jf8n0zoCac+sxWnn+hMe/CzaSejb/eVw2YToiXYX+Ex/AuHHia28vWTq4goAexFbw==
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"

@@ -2,7 +2,7 @@
  * @Author: wangchaoxu
  * @Date: 2020-05-12 17:17:38
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-22 18:01:10
+ * @LastEditTime: 2022-08-24 13:19:47
  * @Description: vue配置文件
  */
 'use strict';
@@ -63,9 +63,9 @@ module.exports = {
             test: /[\\/]node_modules[\\/]vue[\\/]/,
             priority: -10
           },
-          vuex: {
-            name: 'vuex',
-            test: /[\\/]node_modules[\\/]vuex[\\/]/,
+          leaflet: {
+            name: 'leaflet',
+            test: /[\\/]node_modules[\\/]leaflet[\\/]/,
             priority: -10
           },         
           'element-ui': {
