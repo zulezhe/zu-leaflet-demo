@@ -2,13 +2,12 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 22:56:36
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 23:47:55
+ * @LastEditTime: 2022-08-24 07:02:05
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <template>
-  <el-button type="primary" class="add-button" @click="handleClick">{{ text }}</el-button>
-  
+  <el-button type="primary" size="mini" class="add-button" @click="handleClick">{{ text }}</el-button>
 </template>
 <script>
 import L from 'leaflet';
@@ -76,10 +75,10 @@ export default {
               },
               {
                 removeOnEnd: true,
-                icon: L.divIcon({ html: "<i class='icon'>✈</i>", iconSize: L.point(27.5, 24) })
+                icon: L.divIcon({ html: "<i class='icon' style='fontSize:24px'>✈</i>", iconSize: L.point(36, 36) })
               }
             )
-            .motionDuration(8000)
+            .motionDuration(18000)
         ])
         .addTo(map);
       seqGroup.motionStart();

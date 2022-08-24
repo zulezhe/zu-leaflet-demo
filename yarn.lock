@@ -6855,6 +6855,11 @@ leaflet-canvas-marker@^0.2.0:
   dependencies:
     rbush "^2.0.2"
 
+leaflet-canvas-markers@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmmirror.com/leaflet-canvas-markers/-/leaflet-canvas-markers-1.0.7.tgz#660734c35bf9c05cf50ad205472ebda7c752385d"
+  integrity sha512-A2XQLTsIWA45MT7Q1w0JscHkabHJaWmw4+8YV9E6wg9lomUwT26yJQSjVaRxPs9seQ0YExufUS50WHU41oNKJw==
+
 leaflet.motion@^0.3.2:
   version "0.3.2"
   resolved "https://registry.npmmirror.com/leaflet.motion/-/leaflet.motion-0.3.2.tgz#9e20a9e66c68c45cd922452a7d339d70955e2b49"

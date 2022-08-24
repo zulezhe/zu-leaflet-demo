@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 23:07:33
+ * @LastEditTime: 2022-08-24 08:10:40
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -13,6 +13,7 @@
     </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
     <WVector ></WVector>
+    <WHuge></WHuge>
   </div>
 </template>
 <script>
@@ -20,6 +21,7 @@ import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
 import WVector from './vector.vue';
+import WHuge from './huge.vue';
 import { addMarkers, flyTo, clearGroup, closePopup } from '@/wleaflet/core/marker';
 import * as api from '@/api';
 export default {

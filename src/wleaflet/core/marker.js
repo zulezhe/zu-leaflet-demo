@@ -2,45 +2,26 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 10:08:29
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 00:30:27
+ * @LastEditTime: 2022-08-24 07:53:45
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
 import L from 'leaflet';
 import 'leaflet-canvas-marker';
 let popup = null;
+let featureGroup = null;
 /**
  * 添加点
  */
-// export function addMarker(item) {
-//   let marker = L.marker([Number(item.lat), Number(item.lng)], {
-//     icon: L.icon({
-//       iconUrl: item.icon.iconUrl,
-//       iconSize: item.icon.iconSize,
-//       iconAnchor: [0, 0],
-//       popupAnchor: [5, 0],
-//       className: 'leaflet-pulsing-icon'
-//     }),
-//     customData: { ...item }
-//   });
-//   marker
-//     .bindTooltip(item.name, {
-//       direction: 'top',
-//       offset: L.point(15, 0)
-//     })
-//     .openTooltip();
-//   marker.on('click', onClick);
-//   return marker;
-// }
 export function addMarker(item) {
   let marker = L.marker([Number(item.lat), Number(item.lng)], {
-    icon: L.divIcon({
-      html: `
-      <div class="custom-div-icon-container">
-        <img src="${item.icon.iconUrl}" alt="">
-      </div>
-      `,
-      iconSize: L.point(27.5, 24)
+    code: 'marker-' + item.code,
+    icon: L.icon({
+      iconUrl: item.icon.iconUrl,
+      iconSize: item.icon.iconSize,
+      iconAnchor: [0, 0],
+      popupAnchor: [5, 0],
+      className: 'leaflet-custom-icon'
     }),
     customData: { ...item }
   });
@@ -53,12 +34,34 @@ export function addMarker(item) {
   marker.on('click', onClick);
   return marker;
 }
+// export function addMarker(item) {
+//   let marker = L.marker([Number(item.lat), Number(item.lng)], {
+//     code: 'marker-' + item.code,
+//     icon: L.divIcon({
+//       html: `
+//       <div class="custom-div-icon-container">
+//         <img src="${item.icon.iconUrl}" alt="">
+//       </div>
+//       `,
+//       iconSize: L.point(27.5, 24)
+//     }),
+//     customData: { ...item }
+//   });
+//   marker
+//     .bindTooltip(item.name, {
+//       direction: 'top',
+//       offset: L.point(15, 0)
+//     })
+//     .openTooltip();
+//   marker.on('click', onClick);
+//   return marker;
+// }
 /**
  * 添加多点
  * @param {*} list
  */
 export function addMarkers(list, options) {
-  let featureGroup = L.featureGroup();
+  featureGroup = L.featureGroup();
   list.map(item => {
     featureGroup.addLayer(addMarker({ ...item, ...options }));
   });
@@ -117,14 +120,28 @@ export function onMouseout(e) {
  */
 export function onClick(e) {
   let target = e.target;
-  console.log('点击点', e, target._icon);
-  let divs = document.getElementsByClassName('custom-div-icon-container');
-  for (let i = 0; i < divs.length; i++) {
-    const div = divs[i];
-    console.log(div);
-    // L.DomUtil.removeClass(div, 'active');
-    L.DomUtil.addClass(div, 'active');
-  }
+  console.log('点击点', e, target);
+  let layers = featureGroup.getLayers();
+  layers.map(layer => {
+    if (layer.options.code === target.options.code) {
+      // console.log(layer.getIcon());
+      target.setIcon(
+        L.icon({
+          iconUrl: require('@/assets/images/1-2.png'),
+          className: 'leaflet-custom-icon active'
+        })
+      );
+      // L.DomUtil.addClass(layer, 'active');
+    } else {
+      layer.setIcon(
+        L.icon({
+          iconUrl: require('@/assets/images/1.png'),
+          className: 'leaflet-custom-icon'
+        })
+      );
+    }
+  });
+  console.log('获取featureGroup上的所有图层===>', layers);
   // L.DomUtil.addClass(target, 'active');
   popup = L.popup({
     offset: L.point(10, 0)
