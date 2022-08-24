@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 23:09:36
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 22:55:32
+ * @LastEditTime: 2022-08-24 11:15:21
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -51,7 +51,7 @@ export default {
   components: {},
   data() {
     return {
-      isOpen: true
+      isOpen: false
     };
   },
   computed: {},

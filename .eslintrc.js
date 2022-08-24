@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-10-08 23:42:58
- * @LastEditTime: 2022-08-23 21:15:19
+ * @LastEditTime: 2022-08-24 12:53:48
  * @LastEditors: zulezhe
  * @Description: In User Settings Edit
  * @FilePath: \moafly-spa2\.eslintrc.js
@@ -27,6 +27,8 @@ module.exports = {
     google: true,
     Vue: true,
     map: true,
+    L: true,
+    rbush:true,
     Cesium: false,
   }
 };

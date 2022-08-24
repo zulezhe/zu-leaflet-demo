@@ -2,12 +2,12 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 10:08:29
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 07:53:45
+ * @LastEditTime: 2022-08-24 12:52:13
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
 import L from 'leaflet';
-import 'leaflet-canvas-marker';
+import '../lib/leaflet.canvas-markers.js';
 let popup = null;
 let featureGroup = null;
 /**
@@ -72,10 +72,13 @@ export function addMarkers(list, options) {
 /**
  * 添加海量点
  */
-export function addHugeMarkers(list) {
-  let layerGroup = L.canvasIconLayer();
-  let markers = list.map(item => addMarker(item));
-  layerGroup.addLayer(markers);
+export function addHugeMarkers(list, options) {
+  let ciLayer = L.canvasIconLayer({}).addTo(map);
+  list.map(item => {
+    let marker = addMarker({ ...item, ...options });
+    ciLayer.addLayer(marker);
+  });
+  console.log(ciLayer);
 }
 /**
  * 删除点
@@ -124,14 +127,12 @@ export function onClick(e) {
   let layers = featureGroup.getLayers();
   layers.map(layer => {
     if (layer.options.code === target.options.code) {
-      // console.log(layer.getIcon());
       target.setIcon(
         L.icon({
           iconUrl: require('@/assets/images/1-2.png'),
-          className: 'leaflet-custom-icon active'
+          className: 'leaflet-custom-icon blinking'
         })
       );
-      // L.DomUtil.addClass(layer, 'active');
     } else {
       layer.setIcon(
         L.icon({

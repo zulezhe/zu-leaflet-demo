@@ -7,7 +7,7 @@
 + leaflet 1.7.1
 + @supermap/iclient-leaflet 11.0.0
 
-## 需求和思路
+## 需求
 
 + 分页展示模拟数据 ✔
 
@@ -23,23 +23,13 @@
 
 + 点击按钮,地图上模拟显示面和线 ✔
 
-+ 点高亮或者闪烁 
++ 点高亮或者闪烁 ✔
 
 + 模拟数据,点位平滑移动 ✔
 
-+ 通过canvas模拟10000个测试点加载到地图
++ 通过canvas模拟10000个测试点加载到地图 ✔
 
-+ 通过canvas模拟5000个标签加载到地图,并实现标签避让
-
-+ 平滑路径移动
-
-[leaflet.motion](https://github.com/Igor-Vladyka/leaflet.motion)
-
-+ 绘制工具
-
-[leaflet-geoman](https://github.com/geoman-io/leaflet-geoman)
-
-## 两点
++ 通过canvas模拟5000个标签加载到地图,并实现标签避让 ✔
 
 ## 遇到的问题
 

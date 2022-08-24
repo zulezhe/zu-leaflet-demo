@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-23 21:16:32
+ * @LastEditTime: 2022-08-24 11:45:50
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -54,9 +54,13 @@ export default {
       let China = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China', { noWrap: true });
       let ChinaDark = new TiledMapLayer('https://iserver.supermap.io/iserver/services/map-china400/rest/maps/ChinaDark', { noWrap: true });
       let arcgis = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+      var labelTextCollision = new L.LabelTextCollision({
+        collisionFlg: true
+      });
       window.map = this.map = L.map(this.el, {
         ...this.options,
-        layers: [China]
+        layers: [China],
+        renderer: labelTextCollision
       });
       let baseMaps = {
         China: China,

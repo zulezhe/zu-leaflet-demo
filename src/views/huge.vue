@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-24 08:03:34
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 08:09:42
+ * @LastEditTime: 2022-08-24 12:50:37
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -10,7 +10,7 @@
   <el-button type="primary" size="mini" class="add-button" @click="handleClick">加载10000点</el-button>
 </template>
 <script>
-import L from 'leaflet';
+import { addHugeMarkers } from '@/wleaflet/core/marker.js';
 export default {
   components: {},
   data() {
@@ -21,27 +21,22 @@ export default {
   mounted() {},
   methods: {
     handleClick() {
-      var ciLayer = L.canvasIconLayer({}).addTo(map);
-      for (var i = 0; i < 100000; i++) {
-        var lat = 39.905963 + (Math.random() - Math.random()) * 3;
-        var lng = 116.390813 + (Math.random() - Math.random()) * 3;
-        //在这里设置图片和文字，调整位置，让文字显示在图片上
-        var icon = L.icon({
-          iconUrl: require('@/assets/imags/menu-item-default-bg.png'),
-          iconSize: [84, 34],
-          iconAnchor: [40, 20],
-          //添加文字
-          text: i.toString(),
-          textAnchor: [5, 0],
-          textFont: '14px bold', //设置字体大小和样式
-          textFillStyle: '#FFFFFF' //设置字体颜色
+      let list = [];
+      for (var i = 0; i < 10000; i++) {
+        var lat = 34.759197 + (Math.random() - Math.random()) * 3;
+        var lng = 113.778584 + (Math.random() - Math.random()) * 3;
+        list.push({
+          lat: lat,
+          lng: lng,
+          name: '第' + i + '个'
         });
-
-        var marker = L.marker([lat, lng], {
-          icon: icon
-        }).bindPopup('I Am ' + i); //绑定气泡窗口
-        ciLayer.addLayer(marker);
       }
+      addHugeMarkers(list, {
+        icon: {
+          iconUrl: require('@/assets/images/warn.png'),
+          iconSize: [30, 30]
+        }
+      });
     }
   }
 };
@@ -49,7 +44,7 @@ export default {
 <style scoped lang="less">
 .add-button {
   position: absolute;
-  left: 100px;
+  left: 200px;
   top: 20px;
   z-index: 9999;
 }

@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 08:10:40
+ * @LastEditTime: 2022-08-24 11:47:26
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -14,6 +14,7 @@
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
     <WVector ></WVector>
     <WHuge></WHuge>
+    <WAvoid></WAvoid>
   </div>
 </template>
 <script>
@@ -22,10 +23,11 @@ import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
 import WVector from './vector.vue';
 import WHuge from './huge.vue';
+import WAvoid from './avoid.vue';
 import { addMarkers, flyTo, clearGroup, closePopup } from '@/wleaflet/core/marker';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector },
+  components: { WMap, WTable, WDrawTool, WVector,WHuge,WAvoid },
   data() {
     return {
       tableList: [],
