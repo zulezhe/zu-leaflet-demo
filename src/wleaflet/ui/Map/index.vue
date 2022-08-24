@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 11:45:50
+ * @LastEditTime: 2022-08-24 13:42:52
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -15,6 +15,7 @@
 </template>
 <script>
 import L from 'leaflet';
+import  'leaflet/dist/leaflet.css';
 import { TiledMapLayer } from '@supermap/iclient-leaflet';
 export default {
   components: {},
