@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 10:08:29
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 14:06:57
+ * @LastEditTime: 2022-08-24 14:28:13
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
@@ -78,7 +78,7 @@ export function addHugeMarkers(list, options) {
     let marker = addMarker({ ...item, ...options });
     ciLayer.addLayer(marker);
   });
-  console.log(ciLayer);
+  return ciLayer
 }
 /**
  * 删除点

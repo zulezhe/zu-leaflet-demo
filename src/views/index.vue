@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 14:05:44
+ * @LastEditTime: 2022-08-24 14:17:39
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -12,9 +12,12 @@
       <WDrawTool :map="map"></WDrawTool>
     </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
-    <WVector></WVector>
-    <WHuge></WHuge>
-    <WAvoid></WAvoid>
+    <div class="handle-container">
+      <WVector />
+      <WMove />
+      <WHuge />
+      <WAvoid />
+    </div>
   </div>
 </template>
 <script>
@@ -22,12 +25,13 @@ import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
 import WVector from './vector.vue';
+import WMove from './move.vue';
 import WHuge from './huge.vue';
 import WAvoid from './avoid.vue';
 import { addMarkers, flyTo, clearGroup, closePopup, findMarkerBykey, setHighlight } from '@/wleaflet/core/marker.js';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector, WHuge, WAvoid },
+  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid },
   data() {
     return {
       tableList: [],
@@ -89,5 +93,11 @@ export default {
 .home-container {
   width: 100%;
   height: 100%;
+  .handle-container {
+    position: absolute;
+    left: 100px;
+    top: 40px;
+    z-index: 9999;
+  }
 }
 </style>

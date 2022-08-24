@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 22:56:36
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 07:02:05
+ * @LastEditTime: 2022-08-24 14:15:37
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -11,9 +11,7 @@
 </template>
 <script>
 import L from 'leaflet';
-import 'leaflet.motion/dist/leaflet.motion.js';
 let featureGroup = null;
-let route = null;
 export default {
   components: {},
   data() {
@@ -46,51 +44,19 @@ export default {
           console.log(result);
           let polygon = L.polygon(result.polygon, { color: 'red' });
           let polyline = L.polyline(result.polyline, { color: 'red' });
-          route = result.polyline;
           featureGroup.addLayer(polygon);
           featureGroup.addLayer(polyline);
           featureGroup.addTo(map);
           map.fitBounds(featureGroup.getBounds());
           this.text = '清除点和面';
           this.has = true;
-          this.move();
         });
     },
     removeVectorLayer() {
       this.text = '显示点和面';
       featureGroup && featureGroup.clearLayers();
       this.has = false;
-    },
-    move() {
-      let seqGroup = L.motion
-        .seq([
-          L.motion
-            .polyline(
-              route,
-              {
-                color: 'orangered'
-              },
-              {
-                easing: L.Motion.Ease.easeInOutQuad
-              },
-              {
-                removeOnEnd: true,
-                icon: L.divIcon({ html: "<i class='icon' style='fontSize:24px'>✈</i>", iconSize: L.point(36, 36) })
-              }
-            )
-            .motionDuration(18000)
-        ])
-        .addTo(map);
-      seqGroup.motionStart();
     }
   }
 };
 </script>
-<style scoped lang="less">
-.add-button {
-  position: absolute;
-  left: 100px;
-  top: 20px;
-  z-index: 9999;
-}
-</style>

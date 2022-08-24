@@ -22,7 +22,7 @@ export default {
   props: {
     customClass: {
       type: String,
-      default: 'wcx-custom-map'
+      default: 'wcx-custom-map'     
     },
     el: {
       type: String, 
