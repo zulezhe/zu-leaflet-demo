@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 13:42:52
+ * @LastEditTime: 2022-08-24 14:08:27
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -15,7 +15,7 @@
 </template>
 <script>
 import L from 'leaflet';
-import  'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 import { TiledMapLayer } from '@supermap/iclient-leaflet';
 export default {
   components: {},
@@ -25,7 +25,7 @@ export default {
       default: 'wcx-custom-map'
     },
     el: {
-      type: String,
+      type: String, 
       default: 'map'
     },
     options: {

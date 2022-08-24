@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-23 10:08:29
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 12:52:13
+ * @LastEditTime: 2022-08-24 14:06:57
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
@@ -93,7 +93,15 @@ export function clearGroup(group) {
 /**
  * 查找点
  */
-export function findMarker() {}
+export function findMarkerBykey(key, value) {
+  let target = null;
+  map.eachLayer(layer => {
+    if (layer.options[key] == value) {
+      target = layer;
+    }
+  });
+  return target;
+}
 /**
  * 更新点
  */
@@ -124,26 +132,7 @@ export function onMouseout(e) {
 export function onClick(e) {
   let target = e.target;
   console.log('点击点', e, target);
-  let layers = featureGroup.getLayers();
-  layers.map(layer => {
-    if (layer.options.code === target.options.code) {
-      target.setIcon(
-        L.icon({
-          iconUrl: require('@/assets/images/1-2.png'),
-          className: 'leaflet-custom-icon blinking'
-        })
-      );
-    } else {
-      layer.setIcon(
-        L.icon({
-          iconUrl: require('@/assets/images/1.png'),
-          className: 'leaflet-custom-icon'
-        })
-      );
-    }
-  });
-  console.log('获取featureGroup上的所有图层===>', layers);
-  // L.DomUtil.addClass(target, 'active');
+  setHighlight(target);
   popup = L.popup({
     offset: L.point(10, 0)
   }).setLatLng([e.latlng.lat, e.latlng.lng]).setContent(`
@@ -175,6 +164,27 @@ export function onClick(e) {
 export function closePopup() {
   console.log(popup);
   popup && popup._close();
+}
+export function setHighlight(target) {
+  console.log('target===>', target);
+  let layers = featureGroup.getLayers();
+  layers.map(layer => {
+    if (layer.options.code === target.options.code) {
+      target.setIcon(
+        L.icon({
+          iconUrl: require('@/assets/images/1-2.png'),
+          className: 'leaflet-custom-icon blinking'
+        })
+      );
+    } else {
+      layer.setIcon(
+        L.icon({
+          iconUrl: require('@/assets/images/1.png'),
+          className: 'leaflet-custom-icon'
+        })
+      );
+    }
+  });
 }
 /**
  * 聚焦到多点

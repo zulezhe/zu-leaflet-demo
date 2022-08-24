@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 11:47:26
+ * @LastEditTime: 2022-08-24 14:05:44
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -12,7 +12,7 @@
       <WDrawTool :map="map"></WDrawTool>
     </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
-    <WVector ></WVector>
+    <WVector></WVector>
     <WHuge></WHuge>
     <WAvoid></WAvoid>
   </div>
@@ -24,10 +24,10 @@ import WDrawTool from '@/wleaflet/ui/DrawTool';
 import WVector from './vector.vue';
 import WHuge from './huge.vue';
 import WAvoid from './avoid.vue';
-import { addMarkers, flyTo, clearGroup, closePopup } from '@/wleaflet/core/marker';
+import { addMarkers, flyTo, clearGroup, closePopup, findMarkerBykey, setHighlight } from '@/wleaflet/core/marker.js';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector,WHuge,WAvoid },
+  components: { WMap, WTable, WDrawTool, WVector, WHuge, WAvoid },
   data() {
     return {
       tableList: [],
@@ -38,7 +38,7 @@ export default {
         pageNumber: 1,
         pageSize: 5,
         total: 10
-      },
+      }
     };
   },
   computed: {},
@@ -80,6 +80,7 @@ export default {
     rowClick(row, column, event) {
       console.log('点击当前行===>', row, column, event);
       flyTo([Number(row.lat), Number(row.lng)], 13);
+      setHighlight(findMarkerBykey('code', 'marker-' + row.code));
     }
   }
 };
