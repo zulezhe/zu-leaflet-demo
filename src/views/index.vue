@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 14:17:39
+ * @LastEditTime: 2022-09-01 18:45:27
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -13,10 +13,7 @@
     </WMap>
     <WTable :tableList="tableList" :loading="loading" :params="params" @currentChange="currentChange" @rowClick="rowClick" />
     <div class="handle-container">
-      <WVector />
-      <WMove />
-      <WHuge />
-      <WAvoid />
+      <!-- <WAvoid /> -->
     </div>
   </div>
 </template>
@@ -24,14 +21,11 @@
 import WMap from '@/wleaflet/ui/Map';
 import WTable from '@/components/Table';
 import WDrawTool from '@/wleaflet/ui/DrawTool';
-import WVector from './vector.vue';
-import WMove from './move.vue';
-import WHuge from './huge.vue';
-import WAvoid from './avoid.vue';
+// import WAvoid from './avoid.vue';
 import { addMarkers, flyTo, clearGroup, closePopup, findMarkerBykey, setHighlight } from '@/wleaflet/core/marker.js';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid },
+  components: { WMap, WTable, WDrawTool },
   data() {
     return {
       tableList: [],
@@ -48,7 +42,7 @@ export default {
   computed: {},
   created() {},
   mounted() {
-    this.getData();
+    // this.getData();
   },
   methods: {
     mapComplete(map) {
@@ -79,7 +73,7 @@ export default {
     currentChange(val) {
       this.params.pageNumber = val;
       closePopup();
-      this.getData();
+      // this.getData();
     },
     rowClick(row, column, event) {
       console.log('点击当前行===>', row, column, event);

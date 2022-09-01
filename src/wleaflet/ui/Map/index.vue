@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 18:20:47
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 14:08:27
+ * @LastEditTime: 2022-09-01 18:46:41
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -16,6 +16,7 @@
 <script>
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import '../../lib/L.LabelTextCollision.js';
 import { TiledMapLayer } from '@supermap/iclient-leaflet';
 export default {
   components: {},
