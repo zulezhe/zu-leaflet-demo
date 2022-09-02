@@ -33,9 +33,11 @@
 
 ## 遇到的问题
 
-+ 1. @supermap/iclient-leaflet 11.0.0 不支持leaflet最新版(v1.8.0),默认安装leaflet后运行会摆错,但是官网文档并没有指出来
++ 报错一 TypeError: Cannot read properties of undefined (reading 'lat')
 
-+ Error: The provided object is not a Layer.
+@supermap/iclient-leaflet 11.0.0 不支持leaflet最新版(v1.8.0),默认安装leaflet后运行会摆错,但是官网文档并没有指出来
+
++ 报错二 Error: The provided object is not a Layer.
 
 使用 layerGroup添加多个点的时候我这样使用会报上述错误
 
