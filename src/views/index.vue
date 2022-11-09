@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-08-22 20:24:42
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-08-24 14:17:39
+ * @LastEditTime: 2022-11-09 16:54:22
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -17,6 +17,7 @@
       <WMove />
       <WHuge />
       <WAvoid />
+      <Heatmap />
     </div>
   </div>
 </template>
@@ -28,10 +29,11 @@ import WVector from './vector.vue';
 import WMove from './move.vue';
 import WHuge from './huge.vue';
 import WAvoid from './avoid.vue';
+import Heatmap from './heatmap.vue';
 import { addMarkers, flyTo, clearGroup, closePopup, findMarkerBykey, setHighlight } from '@/wleaflet/core/marker.js';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid },
+  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid, Heatmap },
   data() {
     return {
       tableList: [],

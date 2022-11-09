@@ -11,7 +11,9 @@
     "@supermap/iclient-leaflet": "^11.0.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
+    "heatmap.js": "^2.0.5",
     "leaflet": "1.7.1",
+    "leaflet.heat": "^0.2.0",
     "leaflet.motion": "^0.3.2",
     "vue": "^2.6.11"
   },
