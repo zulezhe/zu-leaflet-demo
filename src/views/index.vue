@@ -18,6 +18,7 @@
       <WHuge />
       <WAvoid />
       <Heatmap />
+      <Flashing/>
     </div>
   </div>
 </template>
@@ -30,10 +31,11 @@ import WMove from './move.vue';
 import WHuge from './huge.vue';
 import WAvoid from './avoid.vue';
 import Heatmap from './heatmap.vue';
+import Flashing from './flashing.vue';
 import { addMarkers, flyTo, clearGroup, closePopup, findMarkerBykey, setHighlight } from '@/wleaflet/core/marker.js';
 import * as api from '@/api';
 export default {
-  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid, Heatmap },
+  components: { WMap, WTable, WDrawTool, WVector, WMove, WHuge, WAvoid, Heatmap,Flashing },
   data() {
     return {
       tableList: [],

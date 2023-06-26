@@ -78,7 +78,7 @@ export function addHugeMarkers(list, options) {
     let marker = addMarker({ ...item, ...options });
     ciLayer.addLayer(marker);
   });
-  return ciLayer
+  return ciLayer;
 }
 /**
  * 删除点
